@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run pytest
+      # Backstop for nbstripout: fail if any committed notebook has outputs.
+      - name: Notebooks have no outputs
+        run: |
+          files=$(git ls-files '*.ipynb')
+          if [ -n "$files" ]; then uv run nbstripout --verify $files; fi

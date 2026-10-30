@@ -27,6 +27,8 @@ Validation rules are pure functions with ids (SC-01, X-01, ...) and one unit tes
 - Python: clean, modular, typed (pydantic models at step boundaries), ruff + pytest.
 
 ## Commands
-(fill in once the project is scaffolded)
+- `uv sync` — install (Python 3.12, pinned in `.python-version`)
 - `uv run pytest`
-- `uv run ruff check .`
+- `uv run ruff check .` and `uv run ruff format .`
+- `uv run pre-commit install` — once per clone; hooks run ruff and strip notebook outputs
+- Code lives in `src/statsreader/<step>/`; tests in `tests/`
