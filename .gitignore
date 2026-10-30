@@ -1,0 +1,19 @@
+# Real data never goes in git
+samples/
+real_data/
+*.jpg
+*.jpeg
+*.png
+*.heic
+*.pdf
+*.xlsx
+*.xlsm
+!tests/fixtures/synthetic/**
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+.pytest_cache/
+.ruff_cache/
